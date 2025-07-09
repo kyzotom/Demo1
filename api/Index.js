@@ -25,4 +25,7 @@ builder.defineStreamHandler(() => Promise.resolve({
     }]
 }));
 
+const iface = builder.getInterface();
+
+// Toto je správny zápis pre Vercel:
 module.exports = (req, res) => iface(req, res);
