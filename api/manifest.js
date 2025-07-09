@@ -1,3 +1,4 @@
+// api/manifest.js
 const manifest = {
   id: "org.streamuj.tv",
   version: "1.2.0",
