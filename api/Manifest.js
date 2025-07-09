@@ -1,5 +1,3 @@
-const { addonBuilder } = require("stremio-addon-sdk");
-
 const manifest = {
   id: "org.streamuj.tv",
   version: "1.2.0",
@@ -18,24 +16,7 @@ const manifest = {
   idPrefixes: ["tt"]
 };
 
-const builder = new addonBuilder(manifest);
-
-builder.defineCatalogHandler((args) => {
-  // Prázdny katalóg pre demo
-  return Promise.resolve({ metas: [] });
-});
-
-builder.defineStreamHandler(async ({ id }) => {
-  try {
-    // Testovací stream
-    return {
-      streams: [{
-        title: "Test Stream (DEMO)",
-        url: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
-      }]
-    };
-  } catch (e) {
-    return { streams: [] };
-  }
-});
-module.exports = (req, res) => { ... }
+module.exports = (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.end(JSON.stringify(manifest));
+};
